@@ -13,6 +13,25 @@ public class RationalTest extends TestCase {
         super(name);
     }
 
+    // Test addition
+    public void testPlus() {
+    	assertEquals((new Rational(1,3)).plus(new Rational(1,3)), new Rational(2,3));
+    	assertEquals((new Rational(1,3)).plus(new Rational(2,3)), new Rational(1,1));
+    	assertEquals((new Rational(2,3)).plus(new Rational(1,3)), new Rational(1,1));
+    	assertEquals((new Rational(1,3)).plus(new Rational(1,5)), new Rational(8,15));
+    	assertEquals((new Rational(2,15)).plus(new Rational(4,6)), new Rational(4,5));
+    }
+    
+    // Test subtraction
+    public void testMinus() {
+    	assertEquals((new Rational(1,3)).minus(new Rational(1,3)), new Rational(0,0));
+    	assertEquals((new Rational(1,3)).minus(new Rational(2,3)), new Rational(-1,3));
+    	assertEquals((new Rational(2,3)).minus(new Rational(1,3)), new Rational(1,3));
+    	assertEquals((new Rational(1,3)).minus(new Rational(1,5)), new Rational(2,15));
+    	assertEquals((new Rational(4,5)).minus(new Rational(4,6)), new Rational(2,15));
+    }
+    
+    // Test for equality
     public void testEquality() {
         assertEquals(new Rational(1,3), new Rational(1,3));
         assertEquals(new Rational(1,3), new Rational(2,6));
