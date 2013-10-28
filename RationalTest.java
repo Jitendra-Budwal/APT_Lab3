@@ -12,6 +12,20 @@ public class RationalTest extends TestCase {
     public RationalTest (String name) {
         super(name);
     }
+    
+    // Test for equality
+    public void testEquality() {
+        assertEquals(new Rational(1,3), new Rational(1,3));
+        assertEquals(new Rational(1,3), new Rational(-1,-3));
+        assertEquals(new Rational(1,3), new Rational(2,6));
+        assertEquals(new Rational(3,3), new Rational(1,1));
+    }
+
+    // Test for nonequality
+    public void testNonEquality() {
+        assertFalse(new Rational(2,3).equals(
+            new Rational(1,3)));
+    }
 
     // Test addition
     public void testPlus() {
@@ -24,24 +38,26 @@ public class RationalTest extends TestCase {
     
     // Test subtraction
     public void testMinus() {
-    	assertEquals((new Rational(1,3)).minus(new Rational(1,3)), new Rational(0,0));
+    	assertEquals((new Rational(1,3)).minus(new Rational(1,3)), new Rational(0,1));
     	assertEquals((new Rational(1,3)).minus(new Rational(2,3)), new Rational(-1,3));
     	assertEquals((new Rational(2,3)).minus(new Rational(1,3)), new Rational(1,3));
     	assertEquals((new Rational(1,3)).minus(new Rational(1,5)), new Rational(2,15));
     	assertEquals((new Rational(4,5)).minus(new Rational(4,6)), new Rational(2,15));
+	//try negqtive denominators
+    	assertEquals((new Rational(4,5)).minus(new Rational(-4,-6)), new Rational(2,15));
+    	assertEquals((new Rational(-4,5)).minus(new Rational(-4,6)), new Rational(-2,15));
+    	assertEquals((new Rational(4,-5)).minus(new Rational(-4,6)), new Rational(-2,15));
+    	assertEquals((new Rational(4,-5)).minus(new Rational(4,-6)), new Rational(-2,15));
+    	assertEquals((new Rational(-4,5)).minus(new Rational(4,-6)), new Rational(-2,15));
     }
     
-    // Test for equality
-    public void testEquality() {
-        assertEquals(new Rational(1,3), new Rational(1,3));
-        assertEquals(new Rational(1,3), new Rational(2,6));
-        assertEquals(new Rational(3,3), new Rational(1,1));
-    }
-
-    // Test for nonequality
-    public void testNonEquality() {
-        assertFalse(new Rational(2,3).equals(
-            new Rational(1,3)));
+    // Test multiplication
+    public void testGcd() {
+    	assertEquals((new Rational(56,24)).times(new Rational(1,3)), new Rational(7,9));
+    	assertEquals((new Rational(1,3)).times(new Rational(2,3)), new Rational(2,9));
+    	assertEquals((new Rational(2,3)).times(new Rational(1,3)), new Rational(2,9));
+    	assertEquals((new Rational(1,3)).times(new Rational(1,5)), new Rational(1,15));
+    	assertEquals((new Rational(4,5)).times(new Rational(4,6)), new Rational(8,15));
     }
 
     public void testAccessors() {
